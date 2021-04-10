@@ -20,12 +20,13 @@ CODE_DIR = '..'
 excluded_flags = []
 
 
-basename = 'sactrunc_v2_debug'
+basename = 'sactrunc_v4_cartbalance'
 
 grid = [
     {
         '_main': ['train.py'],
         'seed': list(range(4)),
+        'env': ['cartpole_balance'],
     }
 ]
 

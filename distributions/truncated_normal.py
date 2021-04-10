@@ -1,3 +1,6 @@
+""" Modified from https://github.com/toshas/torch_truncnorm/blob/main/TruncatedNormal.py
+"""
+
 import math
 from numbers import Number
 
@@ -37,6 +40,9 @@ class TruncatedStandardNormal(Distribution):
         if any((self.a >= self.b).view(-1,).tolist()):
             print(self.a)
             print(self.b)
+            indices = self.a >= self.b
+            print(self.a[indices], self.b[indices])
+            import ipdb; ipdb.set_trace()
             raise ValueError('Incorrect truncation range')
         self._dtype_min_gt_0 = torch.tensor(torch.finfo(self.a.dtype).eps).type_as(self.a)
         self._dtype_max_lt_1 = torch.tensor(1 - torch.finfo(self.a.dtype).eps).type_as(self.a)
